@@ -17,6 +17,17 @@ public class M_Loops {
             System.out.println(el); // Возвращает каждый i-ый элемент, но можем использовать только для чтения,
             // заменять его не можем.
         }
-
+        //
+        int k = 6;
+        while (k >= 0){
+            k--;
+            System.out.println("Hello");
+        }
+        //
+        int m = 4;
+        do {
+            m--;
+            System.out.println("do while");
+        } while (m >=1);
     }
 }

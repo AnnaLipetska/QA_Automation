@@ -1,41 +1,67 @@
 package main.java.lesson5.inheritance;
 
 abstract class Animal { // 2-й вариант - чтобы не создавали экземпляры этого класса - abstract
-    private String name;
-    public int age;
+    // По умолчанию обычно public class, но мы поставим abstract class Animal,
+    // чтобы не создавали экземпляры этого класса.
+    // Для абстрактных классов - можно реализовывать методы без реализации.
+//////////////////
+    // public abstract int age; Ошибка. Переменную нельзя делать абстрактной.
 
-    public Animal(String name) { // чтобы не создавали экземпляры классов поставить private
+    private int age;
+    private String name; // Перенесли из класса Cat, когда поняли, что будет много похожих классов,
+    // и решили создать базовый класс Animal.
+//////////////
+
+    ///////////// Конструктор тоже переносим из класса Cat в базовый класс
+    public Animal(String name) { // Поменяли название конструктора с Cat на Animal
+        // Если сделать private Animal(String name), то в дочерних классах нельзя будет
+        // достучаться до этого name, также нельзя будет создать экземпляр класса Animal.
+        this.age = 50; // 50 по умолчанию, когда вызывается конструктор
         this.name = name;
     }
 
-    public String getName() {
-        return this.name;
+    ////////////// Геттеры и сеттеры тоже перенесли из класса Cat в базовый класс, как и переменные.
+    public String getName() { // публичный геттер
+        return this.name + "!";  // return name; - тоже будет работать, компилятор его сам доставит
     }
 
-    public int getAge() {
-        return this.age;
-    }
-
-    public void setName(String name) {
+    public void setName(String name) { // публичный сеттер
         this.name = name;
     }
 
-    public String getName(String name) {
-        System.out.println("Dog gives user its name");
-        return "Overriden method name";
+    public String getName(String user) { // геттер, перегруженный - перегрузка метода
+        return this.name + "! " + user;
+    }
+////////////////// Переопределяем метод toString()
+
+    public String toString() { // toString() возвращает строку, этот метод переопределяет такой
+        // же метод у Object
+        return "My name is " + this.name + " and my age is " + this.age;
     }
 
-    public String getName(String name, int a) {
-        System.out.println("Dog gives user its name");
-        return "Overriden method name";
+    ////////////////// Переопределяем метод equals()
+    public boolean equals(Animal obj) { // Методу будет скармливаться объект - конкретный экземпляр
+        // класса Animal
+        // return this.name == obj.name; // Мы хотим чтобы в случае совпадения имен у животных,
+        // программа считала их равными. Отрабатывает нормально, но т.к. строка - это объект,
+        // то лучше сравнивать через equals()
+        return this.name.equals(obj.name); // У класса String есть свой метод equals()
+        // У класса String метод equals работает более основательно, чем просто у Object,
+        // он перебирает строку по каждому массиву смотрит.
     }
 
+
+/////////////////
+// Если сделать метод protected, то к этому методу смогут обращаться только классы, которые являются
+// его наследниками. Если он не наследник и вне пакета, то не сможет обратиться сюда.
+///////////////////
+
+    // Можно реализовать методы без реализации для абстрактных классов:
+    // Объявляем метод, который будет без реализации
     public abstract String greet();
+    // Это значит, что любой класс, который наследуется от нашего класса должен либо
+    // 1) быть сам абстрактным
+    // 2) либо реализовать этот метод
 
-    //этот метод будет без реализации
-    //описываю поведение, но без деталей
-    public String toString() {
-        return ("My name is " this.name + " and my age is" + this.age);
-    }
 
 }

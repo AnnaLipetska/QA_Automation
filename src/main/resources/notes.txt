@@ -1,0 +1,17 @@
+mvn clean test
+запустить все тесты
+
+mvn clean -Dtest=FirstTest test
+запустить только один тестовый набор
+
+mvn clean -Dtest=FirstTest#successLogin test
+запустить только один тест
+
+mvn clean -Dtest=FirstTest#successLogin+successLogin3 test
+запустить несколько методов-тестов из одного класса-тестового набора
+
+mvn clean -Dtest=FirstTest#success* test
+mvn clean -Dtest=FirstTest#wrong* test
+Запускает все тесты из класса FirstTest, названия которых начинаются с success или wrong соответственно
+---------------
+mvn clean -Dtest=TestServer test

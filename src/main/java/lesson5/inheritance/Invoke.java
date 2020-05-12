@@ -86,5 +86,21 @@ public class Invoke {
         victor.setName("Victor");
         System.out.println(vasiliy.equals(victor)); // false так как имена котов разные, а наш метод
         // equals сравнивает их имена
+
+        Animal cat = new Cat("AA"); // Приведение типов
+        // Восходящее преобразование
+        //cat. будут все методы из Animal, но созданные в Cat будут отсутствовать.
+        // Cat cat2 = cat; // Ругается, т.к. мы пытаемся сузить этот тип
+        Cat cat2 = (Cat) cat; // нужно явно преобразовывать
+
+        Cat[] cats = {new Cat("A"), new Cat("B")}; // массив котов
+        // Cat[] cats1 = {new Cat("A"), new Cat("B"), new Dog("C")}; // Ошибка
+        Animal[] cats1 = {new Cat("A"), new Cat("B"), new Dog("C")}; // Использование родительских
+        // классов для таких смешанных массивов
+        // IAtackable[] atackable = {new Cat("A"), new Dog("B"), new Mouse("C")};
+        IAtackable[] atackable = {new Dog("B"), new Mouse("C")};
+        IAtackable animal = new Dog("DD");
+        Mouse mouse = new Mouse("");
+
     }
 }

@@ -1,11 +1,12 @@
 package main.java.lesson5.inheritance;
 
-public class Dog extends Animal {
+public class Dog extends Animal implements IAtackable {
     public Dog(String name) { // Автоматически созданный конструктор с помощью варианта 2
         // System.out.println(""); // Обращение к super является обязательным в конструкторе, поэтому
         // при написании данной строки здесь, все загорается красным. В конструкторе мы не можем
         // вначале выполнить какую-то логику, а потом обратиться к родительскому классу
         super(name); // вариант 2 - смотри ниже
+        // this.health = 100;
     }
     // После написания extends Animal можно не 1-й вариант как у Cat - вбивание руками конструктора,а
     // 2-й вариант: нажать на красное выделение, которое подсвечивает надпись,
@@ -60,4 +61,8 @@ public class Dog extends Animal {
         return "Hello, I am a Dog.";
     }
 
+    @Override
+    public int getHealth() {
+        return 0;
+    }
 }

@@ -15,3 +15,8 @@ mvn clean -Dtest=FirstTest#wrong* test
 Запускает все тесты из класса FirstTest, названия которых начинаются с success или wrong соответственно
 ---------------
 mvn clean -Dtest=TestServer test
+--------
+mvn clean -DsuiteXmlFile=smoke-testng.xml test
+Тест проганяется с тем xml файлом, который мы попросим
+Если не впишем, то будет дефолтное значение подставлено
+

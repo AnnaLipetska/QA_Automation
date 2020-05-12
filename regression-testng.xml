@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="firstSuite">
+    <test name="firstTest">
+        <classes>
+            <class name="test.java.lesson5.SecondTest"/>
+            <class name="test.java.lesson5.FirstTest"/>
+            <class name="test.java.lesson5.TestServer"/>
+            <!--Если какие-то тесты, например, нестабильные, и мы не хотим их проганять.-->
+        </classes>
+    </test>
+</suite>

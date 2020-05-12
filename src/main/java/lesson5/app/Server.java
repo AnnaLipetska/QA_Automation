@@ -15,5 +15,20 @@ public class Server { // Будет выполнять очень примити
         return result;
     }
 
+    // Создаем метод чтобы протестировать с помощью data providing
+    public String getStatus(int age) {
+        if (age <= 0) { // Дописали это условие, чтобы не было бага
+            return "Not valid input";
+        } else if (/*age < 18*/ /*age > 0 &&*/ age < 18) { // Исправили ошибку в коде, но так не помогло до конца
+            // пришлось выше одно условие дописать, а тут обратно вернуть
+            return "Student";
+        } else if (age < 60) {
+            return "Worker";
+        } else if (age /*<*/ <= 90) { // Исправили ошибку в коде
+            return "Pensioner";
+        } else {
+            return "Not valid input";
+        }
+    }
 }
 

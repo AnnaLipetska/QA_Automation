@@ -119,6 +119,7 @@ public class TestServer { // Можно запустить весь класс
     public void afterMethod() {
         System.out.println("I am a After method");
     }
+
     // <AfterClass> хук будет работать один раз после исполнением тестового класса.
     @AfterClass
     public void tearDown() {

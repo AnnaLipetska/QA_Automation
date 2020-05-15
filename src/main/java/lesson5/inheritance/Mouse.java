@@ -6,11 +6,11 @@ public class Mouse extends Animal implements IAtackable {
     }
 
     @Override
-    public  String greet() {
+    public String greet() {
         return null;
     }
 
-    @Override
+    @Override // Метод из интерфейса, который необходимо реализовать.
     public int getHealth() {
         return 0;
     }

@@ -1,12 +1,13 @@
 package main.java.lesson5.inheritance;
 
-public class Dog extends Animal implements IAtackable {
+public class Dog extends Animal implements IAtackable { // lesson7_37:59 интерфейс, соответственно, если бы у
+    // интерфейса был какой-то нереализованный метод, то мы были бы обязаны его здесь реализовать.
     public Dog(String name) { // Автоматически созданный конструктор с помощью варианта 2
         // System.out.println(""); // Обращение к super является обязательным в конструкторе, поэтому
         // при написании данной строки здесь, все загорается красным. В конструкторе мы не можем
         // вначале выполнить какую-то логику, а потом обратиться к родительскому классу
         super(name); // вариант 2 - смотри ниже
-        // this.health = 100;
+        //this.health = 100; // Подсвечивает красным lesson7_53:41, Нужно реализовывать геттеры и сеттеры.
     }
     // После написания extends Animal можно не 1-й вариант как у Cat - вбивание руками конструктора,а
     // 2-й вариант: нажать на красное выделение, которое подсвечивает надпись,
@@ -48,7 +49,7 @@ public class Dog extends Animal implements IAtackable {
     public String getName(String name) {
         System.out.println("Dog gives user its name:");
         // return super.getName();
-        return  "Overriden method name";
+        return "Overriden method name";
     }
     // Если сигнатуры в родительском и дочернем классах отличаются и не стоит Override
     // программа скомпилируется, будет работать, но тут не понятное объяснение преподавателя
@@ -61,7 +62,7 @@ public class Dog extends Animal implements IAtackable {
         return "Hello, I am a Dog.";
     }
 
-    @Override
+    @Override // Метод из интерфейса, который необходимо реализовать в классе:
     public int getHealth() {
         return 0;
     }

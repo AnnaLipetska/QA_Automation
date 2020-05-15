@@ -1,38 +1,90 @@
 package main.java.lesson5.inheritance;
 
-public class Exceptions {
+public class Exceptions { // lesson7_56:37
     public static void main(String[] args) {
-        a();
+        a(); // В главном классе вызываем метод a()
     }
 
-    public static void a() {
-        try {
-            b();
-        } catch (Exception e) {
-            System.out.println("Exception was caught");
+    //..................Вступление..................
+/*    public static void a() { // lesson7_57:02
+        System.out.println("A method");
+    }
+
+    public static void b() { // lesson7_57:27
+        // Представим себе, что метод b() читает из файла и дальше передает данные прочитанные.
+        // Допустим файла не оказалось или к нему нет прав доступа - тогда программа вылетит и все.
+        // Лучше отлавливать проблемы, не экстренно завершать программу, а как-то сигнализировать пользователю, что
+        // произошла ошибка потому что он не создал файл.
+        System.out.println("B method - file was read");
+    }*/
+//...........................
+    //  Общая логика обработки исключений: lesson7_59:26
+/*    public static void a() {
+        System.out.println("A method");
+    }
+
+    public static void b() {
+        try { // в случае падения в блоке try автоматически переходит в catch
+            System.out.println("B method - file was read");
+            System.out.println("B method - file was read");
+        } catch (Exception e) { // catch принимает на вход какую-нибудь ошибку
+            System.out.println("File not found");
         }
-        System.out.println("method");
+    }*/
+    //.........................
+    // Обрабатывать исключения можно двумя способами. Примеры. lesson7_1:00:29
+    // Попробуем симитировать ошибку, например, поделить на 0
+//................................
+/*    // Первый способ обработки исключений:
+    public static void a() {
+        b();
+        System.out.println("A method");
     }
 
-/*    public static void b() {
-        // System.out.println(" B method - File was read");
-        // Обработка исключений
-        // int f = 7 / 0; // Ошибка
-
-        // Первый способ обработки исключений
-        try { // В блоке try должно быть по минимуму информации
-            int a = 7 / 0; // Нормально отрабатывает, не вылетает
-            System.out.println("B method - file was read"); // После поломки ничего не исполняется
-            System.out.println("B method - file was read"); // Управление передается в блок catch
+    public static void b() {
+        // int a = 7 / 0; Если не использовать try-catch, программа в этом месте вылетает, сообщение об ошибке.
+        try {
+            int a = 7 / 0; // В этом месте управление передается в блок catch. После того как в блоке try происходит
+            // исключение, все остальные команды блока try не исполняются. Программа не вылетает.
+            // В блоке try должно быть по минимуму информации, не нужно писать в нем огромные куски кода, нужно писать
+            // только то, что реально может поламаться. Работа с файлами, чтение, запись. Сложной логики быть не должно.
+            System.out.println("B method - file was read");
+            System.out.println("B method - file was read");
         } catch (Exception e) {
             System.out.println("File not found");
         }*/
+//................................ lesson7_1:04:44
+    // Второй способ - не обрабатывать исключения на месте внутри метода, а прокидывать наружу, т.е. говорить что у
+    // меня потенциально может возникнуть здесь исключение, но я не хочу его здесь обрабатывать, я хочу передать его в
+    // тот метод, который вызовет этот метод b() и пусть тот вызывающий метод сам определяет как он хочет его
+    // обрабатывать
+    public static void a() {
+        try {
+            b(); // Пока не напишем как обрабатывать исключение, которое может выкинуть метод b() подсвечивает красным.
+        } catch (Exception e) {
+            //e.printStackTrace(); IDEA сама эту строку подсовывает, мы ее меняем на нужное нам
+            System.out.println("Exception was caught");
+        }
+        // Можно либо прописать тут try-catch либо тоже передать его наверх в метод main и прописывать обработку
+        // исключения уже там (add exception to method signature).
+        // Alt+Enter выдает нам эти 2 варианта: Add exception to method signature и Surround with try/catch.
+        // Решили поместить в try/catch
+        System.out.println("A method");
+    }
 
-    // Второй способ - не обрабатывать внутри себя, а прокидывать наружу
-    public static void b() throws Exception {
+    public static void b() throws Exception { // используется ключевое слово throws
+        // В данном случае мы хотим прокинуть базовый тип исключения Exception
+        // Метод b потенциально выкидывает исключение, метод a() вызывающий такой метод должен внутри себя как-то
+        // обработать это исключение.
         System.out.println("B method - file was read");
         System.out.println("B method - file was read");
         int a = 7 / 0;
         System.out.println("After Exception");
     }
+    //.............. lesson7_1:08:18
+    // Свои исключения нам писать не надо, нам нужно их как-то обрабатывать.
+    // Мы будем пользоваться методом sleep, который позволяет замедлить выполнение программы.
+    // Метод sleep потенциально может выкинуть исключение и его нужно как-то обработать, на случай если будет ошибка.
+    //..................
 }
+

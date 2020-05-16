@@ -5,7 +5,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SecondTest {
-    // @Parameters({"chrome"}) // Хочу чтобы тест параметризировался браузером chrome, если запустить ничего не
+/*    // @Parameters({"chrome"}) // Хочу чтобы тест параметризировался браузером chrome, если запустить ничего не
     // получится, сюда должно попадать не конкретное значение, а переменная.
     @Parameters({"browser"}) // Вносим название переменной, но ошибка та же, так как переменную мы не прокинули.
     // Как прокинуть переменную? В testng.xml на тестом вносим <parameter>
@@ -24,5 +24,13 @@ public class SecondTest {
         // если отсюда запускать, то "firefox"
         System.out.println("Second Hello " + browser);
     }
-    // Чтобы запараметризировать browser нужна аннотация @Parameters
+    // Чтобы запараметризировать browser нужна аннотация @Parameters*/
+
+    //..........................
+    // Если несколько параметров, то
+    @Parameters({"browser", "version"})
+    @Test
+    public static void successLogin(@Optional("firefox") String browser, @Optional("v50") String version) {
+        System.out.println("Second Hello " + browser + " " + version);
+    }
 }

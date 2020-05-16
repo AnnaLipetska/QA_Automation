@@ -1,3 +1,4 @@
+// Это не тест, а скрипт
 package test.java.lesson6;
 
 import org.openqa.selenium.By;
@@ -60,8 +61,18 @@ public class A_Run_browser {
         // driver.findElement(By.cssSelector("header-topline__user-link link-dashed")).getText();// Можно и так записать
         // Теперь мы вызываем getText, который на выходе выплевывает строку, поэтому сразу присвоим значенние
         // строке
-        String name = driver.findElement(By.cssSelector("header-topline__user-link link-dashed")).getText();
+        // [class='header-topline__user-link link-dashed']
+        // String name = driver.findElement(By.cssSelector("header-topline__user-link link-dashed")).getText();
+
+        // При попытке отработать код выдает ошибку, т.к. браузер подтянулся без кеша и там не закешировано имя.
+        // Вывалилось сообщение no such element.
+        // Как это обойти? Закомментируем метод quit дальше по тексту.
+        // Запустим еще раз наш драйвер, он у нас еще раз свалится, но браузер не закроется и мы сможем посмотреть
+        // какой там есть элемент, как он звучит.
+        String name = driver.findElement(By.cssSelector("[class='header-topline__user-link link-dashed']")).getText();
         System.out.println(name);
+        // Поменяли селектор, запускаем. Раскомментируем quit. Срабатывает нормально.
+        // В консоли видим строку, с ней при желании можем работать.
 //.............................
         driver.quit(); // закроет страницу и все вкладки, более удобный
         // driver.close(); // закроет только текущую вкладку

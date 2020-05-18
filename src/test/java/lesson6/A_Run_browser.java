@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class A_Run_browser {
+public class A_Run_browser { //  Это не тест, а просто скрипт
     public static void main(String[] args) throws InterruptedException { // throws...Exception добавилось автоматически
         // из-за метода Thread.sleep. Тут не общее исключение, а исключение перехвата унаследованное от общего класса
         // исключений.

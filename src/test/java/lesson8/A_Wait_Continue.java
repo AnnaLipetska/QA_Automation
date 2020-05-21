@@ -82,9 +82,9 @@ public class A_Wait_Continue {
         assertTrue(actual.contains(expected),
                 String.format("Expected '%s' to contain '%s'", actual, expected));
         // Это рабочий код:
-/*        driver.findElement(logo).click();
+        driver.findElement(logo).click();
         new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(iPhone)));*/
+                .until(ExpectedConditions.not(ExpectedConditions.presenceOfAllElementsLocatedBy(iPhone)));
     }
 
     @AfterMethod

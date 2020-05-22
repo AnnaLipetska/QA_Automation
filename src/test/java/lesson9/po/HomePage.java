@@ -27,7 +27,7 @@ public class HomePage {
 
     public HomePage open() {
         driver.get("https://rozetka.com.ua/");
-        return this;
+        return this; // Необязательный подход, но он позволит, возможно, следать код более читабельным.
     }
 
     public HomePage search(String searchStr) {
@@ -40,12 +40,8 @@ public class HomePage {
         }
         searchEl.sendKeys(this.searchStr);
         searchEl.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(searchResultItem)));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchResultItem));
         return this;
     }
 

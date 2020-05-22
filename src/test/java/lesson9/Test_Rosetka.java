@@ -34,7 +34,7 @@ public class Test_Rosetka {
     By qaLinks = By.cssSelector("[name='slider-block-active']");
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
@@ -48,24 +48,27 @@ public class Test_Rosetka {
         driver.get("https://rozetka.com.ua/");
         WebElement searchEl = driver.findElement(search);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl));
-        if( driver.findElements(popup).size() > 0 ) {
+        if (driver.findElements(popup).size() > 0) {
             driver.findElement(popupClose).click();
         }
         searchEl.sendKeys(searchStr);
         searchEl.sendKeys(Keys.ENTER);
-        try {
+/*        try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(iPhone)));
+        }*/
+        // wait.until(ExpectedConditions.visibilityOf(driver.findElement(iPhone))); //Данное ожидание не срабатывает, на
+        // этой строке тест падает, если не использовать Thread.sleep
+        wait.until(ExpectedConditions.visibilityOfElementLocated(iPhone)); // Тест прошел нормально без Thread.sleep
+
         wait.until(ExpectedConditions.elementToBeClickable(contactBtn));
         driver.findElement(contactBtn).click();
         wait.until(ExpectedConditions.elementToBeClickable(qAndABn));
         driver.findElement(qAndABn).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(qaLinks));
         List<WebElement> webLinks = driver.findElements(qaLinks);
-        for (WebElement element: webLinks) {
+        for (WebElement element : webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
             String actualColor = element.getCssValue("color");
             assertEquals(expectedColor, actualColor);

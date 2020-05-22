@@ -1,15 +1,11 @@
 package test.java.lesson9;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.java.lesson9.po.ContactPage;
 import test.java.lesson9.po.FaqPage;
 import test.java.lesson9.po.HomePage;
-
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -36,7 +32,7 @@ public class Test_PO_Rozetka extends TestBaseSetup {
         for (WebElement element: webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
             String actualColor = element.getCssValue("color");
-            assertEquals(expectedColor, actualColor);
+            assertEquals(actualColor, expectedColor);
         }
     }
 
@@ -48,5 +44,7 @@ public class Test_PO_Rozetka extends TestBaseSetup {
                 .clickContacts();
         contactPage.clickFaq();
         faqPage.getQuestions();
+        // Мы можем подряд на одной странице вызывать несколько методов, так как наши методы возвращают нам ту же
+        // страницу.
     }
 }

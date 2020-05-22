@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import test.java.lesson9.po.ContactPage;
 import test.java.lesson9.po.FaqPage;
 import test.java.lesson9.po.HomePage;
+
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -29,7 +30,7 @@ public class Test_PO_Rozetka extends TestBaseSetup {
         homePage.clickContacts();
         contactPage.clickFaq();
         List<WebElement> webLinks = faqPage.getQuestions();
-        for (WebElement element: webLinks) {
+        for (WebElement element : webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
             String actualColor = element.getCssValue("color");
             assertEquals(actualColor, expectedColor);

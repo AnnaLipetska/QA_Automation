@@ -10,13 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HomePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private String searchStr;
     String popupStrSelect = "[class='popup-css lang-switcher-popup sprite-side']";
     By search = By.cssSelector("[name='search']");
     //By iPhone = By.xpath("//div[@class='g-i-tile-i-title clearfix']/a[contains(text(), '" + searchStr + "')]");
     By popup = By.cssSelector(popupStrSelect);
     By popupClose = By.cssSelector(popupStrSelect + " [class='popup-close']");
     By contactBtn = By.cssSelector("[href='https://rozetka.com.ua/contacts/']");
+    private String searchStr;
 
 
     public HomePage(WebDriver driver) {
@@ -35,7 +35,7 @@ public class HomePage {
         By searchResultItem = By.xpath("//span[contains(text(), '" + searchStr + "')]");
         WebElement searchEl = driver.findElement(search);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl));
-        if( driver.findElements(popup).size() > 0 ) {
+        if (driver.findElements(popup).size() > 0) {
             driver.findElement(popupClose).click();
         }
         searchEl.sendKeys(this.searchStr);

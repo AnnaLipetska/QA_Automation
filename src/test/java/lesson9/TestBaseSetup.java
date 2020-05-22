@@ -11,7 +11,7 @@ public class TestBaseSetup {
     WebDriver driver;
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");

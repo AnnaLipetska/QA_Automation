@@ -1,5 +1,7 @@
 package test.java.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,12 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends BasePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final String popupStrSelect = "[class='popup-css lang-switcher-popup sprite-side']";
+    //Logger logger = LogManager.getLogger(HomePage.class);
     private String searchStr;
-
     @FindBy(css = "[name='search']")
     private WebElement search;
     @FindBy(css = popupStrSelect)
@@ -34,6 +36,7 @@ public class HomePage {
 
 
     public HomePage(WebDriver driver) {
+        logger.trace("Home page initialized");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(driver, this);
@@ -41,11 +44,17 @@ public class HomePage {
 
 
     public HomePage open() {
+        logger.info("Open");
+        // System.out.println("Home page was opened");
         driver.get("https://rozetka.com.ua/");
-        return this; // Необязательный подход, но он позволит, возможно, следать код более читабельным.
+        logger.debug("URL: " + driver.getCurrentUrl());
+        // System.out.println("URL: " + driver.getCurrentUrl());
+        return this;
     }
 
     public HomePage search(String searchStr) {
+        logger.info("Search on Home page by " + searchStr);
+        // System.out.println("Search on Home page by " + searchStr);
         this.searchStr = searchStr;
         By searchResultItem = By.xpath
                 ("//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
@@ -54,6 +63,7 @@ public class HomePage {
         if (popup.size() > 0) {
             popupClose.click();
         }
+        search.clear();
         search.sendKeys(this.searchStr);
         search.sendKeys(Keys.ENTER);
 //.................
@@ -73,6 +83,7 @@ public class HomePage {
     }
 
     public HomePage clickContacts() {
+        logger.info("Click contacts");
         wait.until(ExpectedConditions.elementToBeClickable(contactBtn));
         contactBtn.click();
         return this;

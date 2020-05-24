@@ -26,9 +26,19 @@ public class Test_PO_Rozetka extends TestBaseSetup {
     @Test
     public void testA() {
         homePage.open();
-        homePage.search("iPhone").search("meizu");
+        homePage.search("iPhone")
+                .search("meizu")
+                .search("xiaomi");
         homePage.clickContacts();
         contactPage.clickFaq();
+
+        homePage.open();
+        homePage.search("iPhone")
+                .search("meizu")
+                .search("xiaomi");
+        homePage.clickContacts();
+        contactPage.clickFaq();
+
         List<WebElement> webLinks = faqPage.getQuestions();
         for (WebElement element : webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
@@ -44,7 +54,7 @@ public class Test_PO_Rozetka extends TestBaseSetup {
                 .search("iPhone")
                 .clickContacts();
         contactPage.clickFaq();
-        faqPage.getQuestions();
+        List<WebElement> webLinks = faqPage.getQuestions();
         // Мы можем подряд на одной странице вызывать несколько методов, так как наши методы возвращают нам ту же
         // страницу.
     }

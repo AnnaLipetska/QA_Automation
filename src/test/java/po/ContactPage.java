@@ -11,8 +11,7 @@ public class ContactPage extends BasePage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    @FindBy(css = "[href='https://rozetka.com.ua/faq/']")
-    private WebElement qAndABn;
+    private final By qAndABn = By.cssSelector("[href='https://rozetka.com.ua/faq/']");
 
 
     public ContactPage(WebDriver driver) {
@@ -24,7 +23,7 @@ public class ContactPage extends BasePage {
     public ContactPage clickFaq() {
         logger.info("Click FAQ");
         wait.until(ExpectedConditions.elementToBeClickable(qAndABn));
-        qAndABn.click();
+        driver.findElement(qAndABn).click();
         return this;
     }
 }

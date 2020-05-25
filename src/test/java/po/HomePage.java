@@ -45,10 +45,10 @@ public class HomePage extends BasePage {
 
     public HomePage open() {
         logger.info("Open");
-        // System.out.println("Home page was opened");
+        logger.error("Open");
+        logger.warn("Open");
         driver.get("https://rozetka.com.ua/");
         logger.debug("URL: " + driver.getCurrentUrl());
-        // System.out.println("URL: " + driver.getCurrentUrl());
         return this;
     }
 
@@ -64,6 +64,9 @@ public class HomePage extends BasePage {
             popupClose.click();
         }
         search.clear();
+        if (popup.size() > 0) {
+            popupClose.click();
+        }
         search.sendKeys(this.searchStr);
         search.sendKeys(Keys.ENTER);
 //.................

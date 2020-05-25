@@ -2,6 +2,7 @@
 *.iml
 target
 *.exe
-
+logs/
+screenshots/
 
 

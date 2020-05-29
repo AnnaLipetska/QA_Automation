@@ -22,3 +22,5 @@ mvn clean -DsuiteXmlFile=smoke-testng.xml test
 --------------
 #new_head > div.b-new-index-icons.container > div > div:nth-child(2) > a > h3 > span
 селектор полученный с помощью Copy selector
+-----------
+mvn clean -DsuiteXmlFile=multithread-testng.xml test

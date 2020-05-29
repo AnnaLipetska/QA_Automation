@@ -12,14 +12,14 @@
         <suiteXmlFile>smoke-testng.xml</suiteXmlFile> <!--Дефолтное значение вписывается посередине-->
     </properties>
     <build>
-<!--        <resources>
+        <resources>
             <resource>
                 <directory>src/test/resources</directory>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
-        </resources>-->
+        </resources>
 
         <sourceDirectory>src</sourceDirectory>
         <plugins>
@@ -60,7 +60,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
-            <!--<scope>test</scope> -->
+            <!--<scope>test</scope>-->
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>

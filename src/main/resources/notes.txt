@@ -19,6 +19,6 @@ mvn clean -Dtest=TestServer test
 mvn clean -DsuiteXmlFile=smoke-testng.xml test
 Тест проганяется с тем xml файлом, который мы попросим
 Если не впишем, то будет дефолтное значение подставлено
-
+--------------
 #new_head > div.b-new-index-icons.container > div > div:nth-child(2) > a > h3 > span
 селектор полученный с помощью Copy selector

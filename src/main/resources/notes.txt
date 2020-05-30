@@ -24,3 +24,8 @@ mvn clean -DsuiteXmlFile=smoke-testng.xml test
 селектор полученный с помощью Copy selector
 -----------
 mvn clean -DsuiteXmlFile=multithread-testng.xml test
+---------
+GRID Commands:
+
+java -jar .\selenium-server-standalone-3.141.59.jar -role hub
+java -jar .\selenium-server-standalone-3.141.59.jar -role node -nodeConfig .\nodeConfig.json

@@ -25,7 +25,7 @@ public class TestBaseSetup {
         options.addArguments("--window-size=1300,1080");
         // driver = new ChromeDriver();
         try {
-            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hb"), options);
+            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

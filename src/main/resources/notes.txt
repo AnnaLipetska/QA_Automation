@@ -29,3 +29,13 @@ GRID Commands:
 
 java -jar .\selenium-server-standalone-3.141.59.jar -role hub
 java -jar .\selenium-server-standalone-3.141.59.jar -role node -nodeConfig .\nodeConfig.json
+
+sudo apt update
+sudo apt install docker
+sudo apt install docker.io
+sudo docker -v
+sudo apt install docker-compose -y
+
+touch seleniumGrid.yml
+sudo nano seleniumGrid.yml
+cat seleniumGrid.yml

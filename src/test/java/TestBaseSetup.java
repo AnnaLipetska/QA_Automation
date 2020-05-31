@@ -30,7 +30,7 @@ public class TestBaseSetup {
             e.printStackTrace();
         }*/
         try {
-            driver = new RemoteWebDriver(new URL("http://http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444//wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

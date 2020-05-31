@@ -39,3 +39,8 @@ sudo apt install docker-compose -y
 touch seleniumGrid.yml
 sudo nano seleniumGrid.yml
 cat seleniumGrid.yml
+-----------
+driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
+заменить
+driver = new RemoteWebDriver(new URL("http://http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444//wd/hub"), options);
+-----------

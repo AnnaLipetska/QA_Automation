@@ -24,6 +24,11 @@ public class TestBaseSetup {
         options.addArguments("--disable-notifications");
         options.addArguments("--window-size=1300,1080");
         // driver = new ChromeDriver();
+/*        try {
+            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }*/
         try {
             driver = new RemoteWebDriver(new URL("http://http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444//wd/hub"), options);
         } catch (MalformedURLException e) {

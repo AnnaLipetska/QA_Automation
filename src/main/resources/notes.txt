@@ -35,12 +35,21 @@ sudo apt install docker
 sudo apt install docker.io
 sudo docker -v
 sudo apt install docker-compose -y
-
+--------
 touch seleniumGrid.yml
 sudo nano seleniumGrid.yml
 cat seleniumGrid.yml
------------
-driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
-заменить
-driver = new RemoteWebDriver(new URL("http://http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444//wd/hub"), options);
+--------
+sudo docker-compose -f seleniumGrid.yml up -d
+sudo docker-compose -f seleniumGrid.yml down
+
+sudo docker images
+sudo docker rmi ...
+
+sudo docker-compose -f seleniumGrid.yml scale chrome=2
+
+secret
+
+sudo docker run -it --rm -p 5900:5900 -p 4444:4444 selenium/standalone-chrome-debug
+
 -----------

@@ -4,6 +4,7 @@
         <classes>
             <class name="test.java.TestFirst"/>
             <class name="test.java.TestSecond"/>
+            <class name="test.java.TestThird"/>
         </classes>
     </test>
 </suite>

@@ -3,6 +3,7 @@ package test.java;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
@@ -20,17 +21,19 @@ public class TestBaseSetup {
     @BeforeMethod
     public void beforeMethod() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-notifications");
-        options.addArguments("--window-size=1300,1080");
+        ChromeOptions optionsCh = new ChromeOptions();
+        optionsCh.addArguments("--disable-notifications");
+        optionsCh.addArguments("--window-size=1300,1080");
+
+        FirefoxOptions optionsFF = new FirefoxOptions();
         // driver = new ChromeDriver();
-/*        try {
-            driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), options);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }*/
+
         try {
-            driver = new RemoteWebDriver(new URL("http://ec2-3-17-186-224.us-east-2.compute.amazonaws.com:4444/wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("http://ec2-13-59-33-74.us-east-2.compute.amazonaws.com:4444/wd/hub"), optionsCh);
+            // driver = new RemoteWebDriver(new URL("http://ec2-13-59-33-74.us-east-2.compute.amazonaws.com:4444/wd/hub"), optionsFF);
+            // driver = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), optionsCh);
+            // driver = new RemoteWebDriver(new URL("localhost:4444/wd/hub"), optionsCh);
+            // localhost - это синоним 127.0.0.1, это одно и то же
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

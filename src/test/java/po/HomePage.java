@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class HomePage extends BasePage {
         logger.info("Open");
         logger.error("Open");
         logger.warn("Open");
-        driver.get("https://rozetka.com.ua/");
+        driver.get(PropertyLoader.loadProperty("url"));
         logger.debug("URL: " + driver.getCurrentUrl());
         return this;
     }

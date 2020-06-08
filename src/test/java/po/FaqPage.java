@@ -1,5 +1,6 @@
 package test.java.po;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public class FaqPage extends BasePage {
         wait = new WebDriverWait(this.driver, 10);
     }
 
+    @Step("Get questions")
     public List<WebElement> getQuestions() {
         logger.info("Get questions");
         wait.until(ExpectedConditions.visibilityOfElementLocated(qaLinks));

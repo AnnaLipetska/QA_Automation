@@ -1,5 +1,6 @@
 package test.java.po;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class ContactPage extends BasePage {
         wait = new WebDriverWait(this.driver, 10);
     }
 
+    @Step("Click FAQ")
     public ContactPage clickFaq() {
         logger.info("Click FAQ");
         wait.until(ExpectedConditions.elementToBeClickable(qAndABn));

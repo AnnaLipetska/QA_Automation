@@ -53,3 +53,9 @@ secret
 sudo docker run -it --rm -p 5900:5900 -p 4444:4444 selenium/standalone-chrome-debug
 
 -----------
+--------Allure----------
+mvn clean -DsuiteXmlFile=ui.xml test
+
+allure serve allure-results
+
+allure generate allure-results -c -o allure-report
